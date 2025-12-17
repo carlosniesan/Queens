@@ -148,6 +148,12 @@ function updateCellContent(cell, state) {
 
 // Manejar clic en celda - Ciclo: vacío → X → 👑 → vacío
 function handleCellClick(row, col) {
+    // Verificar si el grid está deshabilitado
+    const cell = gridElement.children[row * currentGridSize + col];
+    if (cell.classList.contains('disabled')) {
+        return;
+    }
+    
     // Guardar el estado anterior para el historial
     const previousState = grid[row][col];
     
@@ -394,6 +400,15 @@ function showVictory() {
     document.querySelectorAll('.cell.queen').forEach(cell => {
         cell.classList.add('success');
     });
+    
+    // Deshabilitar todas las celdas del grid
+    document.querySelectorAll('.cell').forEach(cell => {
+        cell.classList.add('disabled');
+        cell.style.cursor = 'not-allowed';
+    });
+    
+    // Deshabilitar botón de deshacer
+    undoBtn.disabled = true;
     
     playSound('victory');
     

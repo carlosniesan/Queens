@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Queens</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>👑 Queens 👑</h1>
         
+        <!-- Botones info/modo/volumen -->
+        <div class="controls-top">
+            <button id="infoBtn" class="icon-btn" title="Información">
+                <span class="icon">ℹ️</span>
+            </button>
+            <button id="themeBtn" class="icon-btn" title="Cambiar tema">
+                <span class="icon">🌓</span>
+            </button>
+            <button id="volumeBtn" class="icon-btn" title="Sonido">
+                <span class="icon">🔊</span>
+            </button>
+        </div>
+
+        <!-- Selector de niveles con filtro y botón aleatorio -->
         <div class="level-navigation">
             <button id="prevLevelBtn" class="nav-btn" title="Nivel anterior">
                 <span class="icon">◀</span>
@@ -29,26 +43,14 @@
             </select>
         </div>
 
+        <!-- Grid centrado -->
         <div class="game-wrapper">
-            <div class="center-content">
-                <div class="game-container">
-                    <div id="grid" class="grid"></div>
-                </div>
-            </div>
-
-            <div class="controls-top">
-                <button id="infoBtn" class="icon-btn" title="Información">
-                    <span class="icon">ℹ️</span>
-                </button>
-                <button id="themeBtn" class="icon-btn" title="Cambiar tema">
-                    <span class="icon">🌓</span>
-                </button>
-                <button id="volumeBtn" class="icon-btn" title="Sonido">
-                    <span class="icon">🔊</span>
-                </button>
+            <div class="game-container">
+                <div id="grid" class="grid"></div>
             </div>
         </div>
 
+        <!-- Botones deshacer y reiniciar -->
         <div class="controls">
             <button id="undoBtn" class="btn btn-undo" disabled>Deshacer</button>
             <button id="resetBtn" class="btn btn-reset">Reiniciar</button>
@@ -65,7 +67,7 @@
             </div>
             <div class="modal-body">
                 <p class="victory-text" id="victoryText">¡Has completado el nivel!</p>
-                <div class="victory-icons">👑✨♛✨🏆</div>
+                <div class="victory-icons">👑✨🏆✨👑</div>
             </div>
             <div class="modal-footer">
                 <button id="playAgainBtn" class="btn btn-check">Siguiente Nivel</button>
