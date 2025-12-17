@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queens</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>👑 Queens 👑</h1>
+        
+        <div class="level-navigation">
+            <button id="prevLevelBtn" class="nav-btn" title="Nivel anterior">
+                <span class="icon">◀</span>
+            </button>
+            <div id="levelLabel" class="level-label">Nivel: 1</div>
+            <button id="nextLevelBtn" class="nav-btn" title="Nivel siguiente">
+                <span class="icon">▶</span>
+            </button>
+        </div>
+
+        <div class="level-filters">
+            <button id="randomLevelBtn" class="btn-filter" title="Nivel aleatorio">
+                <span class="icon">🎲</span> Aleatorio
+            </button>
+            <select id="sizeFilter" class="size-filter" title="Filtrar por tamaño">
+                <option value="all">Todos los tamaños</option>
+            </select>
+        </div>
+
+        <div class="game-wrapper">
+            <div class="center-content">
+                <div class="game-container">
+                    <div id="grid" class="grid"></div>
+                </div>
+            </div>
+
+            <div class="controls-top">
+                <button id="infoBtn" class="icon-btn" title="Información">
+                    <span class="icon">ℹ️</span>
+                </button>
+                <button id="themeBtn" class="icon-btn" title="Cambiar tema">
+                    <span class="icon">🌓</span>
+                </button>
+                <button id="volumeBtn" class="icon-btn" title="Sonido">
+                    <span class="icon">🔊</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="undoBtn" class="btn btn-undo" disabled>Deshacer</button>
+            <button id="resetBtn" class="btn btn-reset">Reiniciar</button>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <!-- Modal de Victoria -->
+    <div id="victoryModal" class="modal">
+        <div class="modal-content victory">
+            <div class="modal-header">
+                <h2>🎉 ¡Felicidades! 🎉</h2>
+            </div>
+            <div class="modal-body">
+                <p class="victory-text" id="victoryText">¡Has completado el nivel!</p>
+                <div class="victory-icons">👑✨♛✨🏆</div>
+            </div>
+            <div class="modal-footer">
+                <button id="playAgainBtn" class="btn btn-check">Siguiente Nivel</button>
+                <button id="closeVictoryBtn" class="btn btn-reset">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Información -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📖 Información del Juego</h2>
+                <button class="close-btn" id="closeInfoBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>🎮 Reglas del Juego</h3>
+                <ul class="rules-list">
+                    <li>👑 Debes colocar una reina en cada fila, columna y región</li>
+                    <li>🚫 No puede haber más de una reina en cada fila, columna o región</li>
+                    <li>❌ Las reinas no pueden tocarse, ni siquiera en diagonal</li>
+                    <li>🖱️ Clics : Marcar con X -> Coloca una 👑 -> Vacía la celda</li>
+                    <li>✅ Las celdas con error se marcan en rojo automáticamente</li>
+                </ul>
+
+                <h3>👨‍💻 Información</h3>
+                <p><strong>Juego:</strong> Queens</p>
+                <p><strong>Versión:</strong> 1.0.0</p>
+                <p><strong>Autor:</strong> Carlos</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="levels.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
