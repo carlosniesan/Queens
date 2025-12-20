@@ -77,7 +77,42 @@ function initializeGame() {
 
 // Actualizar label del nivel
 function updateLevelLabel() {
-    levelLabel.textContent = `Nivel: ${currentLevel + 1}`;
+    const completed = isLevelCompleted(currentLevel);
+    levelLabel.textContent = `Nivel: ${currentLevel + 1}` + (completed ? ' ✅' : ' 🟥');
+}
+
+// Obtener niveles completados desde localStorage
+function getCompletedLevels() {
+    try {
+        const raw = localStorage.getItem('completedLevels');
+        return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+// Guardar niveles completados en localStorage
+function saveCompletedLevels(list) {
+    try {
+        localStorage.setItem('completedLevels', JSON.stringify(list));
+    } catch (e) {
+        // ignore
+    }
+}
+
+// Marcar un nivel como completado
+function markLevelCompleted(levelIndex) {
+    const list = getCompletedLevels();
+    if (!list.includes(levelIndex)) {
+        list.push(levelIndex);
+        saveCompletedLevels(list);
+    }
+}
+
+// Comprobar si un nivel está completado
+function isLevelCompleted(levelIndex) {
+    const list = getCompletedLevels();
+    return list.includes(levelIndex);
 }
 
 // Cargar un nivel específico
@@ -431,6 +466,10 @@ function showVictory() {
         playAgainBtn.textContent = 'Reiniciar desde el Nivel 1';
     }
     
+    // Guardar nivel como completado y actualizar label
+    markLevelCompleted(currentLevel);
+    updateLevelLabel();
+
     showModal(victoryModal);
 }
 
